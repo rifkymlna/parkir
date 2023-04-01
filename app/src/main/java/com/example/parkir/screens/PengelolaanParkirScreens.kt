@@ -32,7 +32,7 @@ fun PengelolaanParkirScreens() {
     val list : LiveData<List<DataParkir>> = dataParkitDao.loadAll()
     val items: List<DataParkir> by list.observeAsState(initial = listOf())
     Column(modifier = Modifier.fillMaxWidth()) {
-        FormPencatatanParkir(dataParkitDao)
+        FormPencatatanParkir(dataParkitDao = dataParkitDao)
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(items = items, itemContent = { item ->
                 Row(modifier = Modifier
@@ -44,18 +44,18 @@ fun PengelolaanParkirScreens() {
                             fontWeight = FontWeight.Bold)
                     }
                     Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Keterangan", fontSize = 14.sp)
+                        Text(text = "Nomer Parkir", fontSize = 14.sp)
                         Text(text = item.noparkir, fontSize = 16.sp, fontWeight =
                         FontWeight.Bold)
                     }
                     Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Pemasukan", fontSize = 14.sp)
-                        Text(text = "Rp.${item.platnomer}", fontSize = 16.sp,
+                        Text(text = "Plat Nomer", fontSize = 14.sp)
+                        Text(text = item.platnomer, fontSize = 16.sp,
                             fontWeight = FontWeight.Bold)
                     }
                     Column(modifier = Modifier.weight(3f)) {
-                        Text(text = "Pengeluaran", fontSize = 14.sp)
-                        Text(text = "Rp.${item.petugas}", fontSize = 16.sp,
+                        Text(text = "Petugas", fontSize = 14.sp)
+                        Text(text = item.petugas, fontSize = 16.sp,
                             fontWeight = FontWeight.Bold)
                     }
                 }

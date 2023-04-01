@@ -100,7 +100,7 @@ fun FormPencatatanParkir(dataParkitDao: DataParkitDao) {
                 val item = DataParkir(id, tanggal.value.text,
                     noParkir.value.text, platNomer.value.text, petugas.value.text)
                 scope.launch {
-                    dataParkitDao.insertAll()
+                    dataParkitDao.insertAll(item)
                 }
 
                 tanggal.value = TextFieldValue("")
